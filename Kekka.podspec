@@ -4,7 +4,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Kekka"
-  s.version      = "0.5.0"
+  s.version      = "0.6.0"
   s.summary      = "Kekka (結果) means Result. This small frmework is inspired from Haskell's monadic types."
 
   s.description  = <<-DESC
@@ -31,11 +31,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/kandelvijaya/Kekka.git", :tag => "#{s.version}" }
 
-
-  s.source_files  = "Kekka", "Kekka/**/*.{h,m}"
-  #s.exclude_files = "Classes/Exclude"
-
+  s.source_files  = 'Kekka/Classes/**/*'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
-
 
 end
