@@ -35,5 +35,7 @@ Pod::Spec.new do |s|
   s.source_files  = "Kekka", "Kekka/**/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
+
 
 end
