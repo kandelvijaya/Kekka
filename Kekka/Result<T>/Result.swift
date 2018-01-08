@@ -25,6 +25,7 @@ public enum Result<T> {
 
 }
 
+
 public extension Result {
 
     /**
