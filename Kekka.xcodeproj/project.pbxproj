@@ -56,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282B127020043210005AD843 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2897E4B7200409D400BEA454 /* Future<T> */,
+				2897E4B42004098000BEA454 /* Result<T> */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		2897E32C2004086400BEA454 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +86,7 @@
 		2897E3382004086400BEA454 /* Kekka */ = {
 			isa = PBXGroup;
 			children = (
-				2897E4B7200409D400BEA454 /* Future<T> */,
-				2897E4B42004098000BEA454 /* Result<T> */,
+				282B127020043210005AD843 /* Classes */,
 				2897E3392004086400BEA454 /* Kekka.h */,
 				2897E33A2004086500BEA454 /* Info.plist */,
 			);

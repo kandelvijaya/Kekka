@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/kandelvijaya/Kekka.git", :tag => "#{s.version}" }
 
 
-  s.source_files  = "Kekka", "Kekka/**/*.{h,m,swift}"
+  s.source_files  = 'Classes/**/*"
 
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
 
