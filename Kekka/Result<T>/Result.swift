@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Typealiased so that users of libraries such as PromiseKit, ResultKit, etc
+/// as either direct or indirect dependencies can unambigiously refer to this
+/// Monadic Typed Resutl.
 public typealias KResult<T> = Result<T>
 
 /**

@@ -8,7 +8,12 @@
 
 import Foundation
 
+/// Typealiased for users who are familiar to PromiseKit
+/// and like the terminology of Promise.
 public typealias KPromise<T> = Future<T>
+
+public typealias KFuture<T> = Future<T>
+
 
 /// A Functional type that encapsulates nested blocks
 /// and their associated async task thereby providing a nice

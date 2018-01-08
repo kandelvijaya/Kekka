@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2897E3402004086500BEA454 /* Kekka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2897E3362004086400BEA454 /* Kekka.framework */; };
-		2897E3452004086500BEA454 /* KekkaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E3442004086500BEA454 /* KekkaTests.swift */; };
 		2897E3472004086500BEA454 /* Kekka.h in Headers */ = {isa = PBXBuildFile; fileRef = 2897E3392004086400BEA454 /* Kekka.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2897E4B62004099000BEA454 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4B52004099000BEA454 /* Result.swift */; };
-		2897E4B9200409E200BEA454 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4B8200409E200BEA454 /* Promise.swift */; };
+		2897E4B9200409E200BEA454 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4B8200409E200BEA454 /* Future.swift */; };
+		2897E4BB20040A7000BEA454 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4BA20040A7000BEA454 /* FutureTests.swift */; };
+		2897E4BD20040BB800BEA454 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4BC20040BB800BEA454 /* ResultTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,10 +30,11 @@
 		2897E3392004086400BEA454 /* Kekka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kekka.h; sourceTree = "<group>"; };
 		2897E33A2004086500BEA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2897E33F2004086500BEA454 /* KekkaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KekkaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2897E3442004086500BEA454 /* KekkaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KekkaTests.swift; sourceTree = "<group>"; };
 		2897E3462004086500BEA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2897E4B52004099000BEA454 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		2897E4B8200409E200BEA454 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		2897E4B8200409E200BEA454 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		2897E4BA20040A7000BEA454 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		2897E4BC20040BB800BEA454 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 		2897E3382004086400BEA454 /* Kekka */ = {
 			isa = PBXGroup;
 			children = (
-				2897E4B7200409D400BEA454 /* Promise<T> */,
+				2897E4B7200409D400BEA454 /* Future<T> */,
 				2897E4B42004098000BEA454 /* Result<T> */,
 				2897E3392004086400BEA454 /* Kekka.h */,
 				2897E33A2004086500BEA454 /* Info.plist */,
@@ -86,8 +88,9 @@
 		2897E3432004086500BEA454 /* KekkaTests */ = {
 			isa = PBXGroup;
 			children = (
-				2897E3442004086500BEA454 /* KekkaTests.swift */,
 				2897E3462004086500BEA454 /* Info.plist */,
+				2897E4BA20040A7000BEA454 /* FutureTests.swift */,
+				2897E4BC20040BB800BEA454 /* ResultTests.swift */,
 			);
 			path = KekkaTests;
 			sourceTree = "<group>";
@@ -100,12 +103,12 @@
 			path = "Result<T>";
 			sourceTree = "<group>";
 		};
-		2897E4B7200409D400BEA454 /* Promise<T> */ = {
+		2897E4B7200409D400BEA454 /* Future<T> */ = {
 			isa = PBXGroup;
 			children = (
-				2897E4B8200409E200BEA454 /* Promise.swift */,
+				2897E4B8200409E200BEA454 /* Future.swift */,
 			);
-			path = "Promise<T>";
+			path = "Future<T>";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +178,7 @@
 					};
 					2897E33E2004086500BEA454 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -220,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2897E4B62004099000BEA454 /* Result.swift in Sources */,
-				2897E4B9200409E200BEA454 /* Promise.swift in Sources */,
+				2897E4B9200409E200BEA454 /* Future.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +232,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2897E3452004086500BEA454 /* KekkaTests.swift in Sources */,
+				2897E4BD20040BB800BEA454 /* ResultTests.swift in Sources */,
+				2897E4BB20040A7000BEA454 /* FutureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,11 +408,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KekkaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kandelvijaya.KekkaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -417,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KekkaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
