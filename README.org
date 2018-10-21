@@ -1,3 +1,5 @@
+![[./icon.png]]
+
 * Kekka
 ** Implemented Features
 *** Result<T>
