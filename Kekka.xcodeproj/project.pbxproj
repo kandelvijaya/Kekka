@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284B2189217D17D6003FE8F1 /* FullyTypedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B2188217D17D6003FE8F1 /* FullyTypedResult.swift */; };
+		284B218B217D1839003FE8F1 /* ErrorEquality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B218A217D1839003FE8F1 /* ErrorEquality.swift */; };
+		284B218D217D192C003FE8F1 /* ResultTExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B218C217D192C003FE8F1 /* ResultTExtensionTest.swift */; };
 		2897E3402004086500BEA454 /* Kekka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2897E3362004086400BEA454 /* Kekka.framework */; };
 		2897E3472004086500BEA454 /* Kekka.h in Headers */ = {isa = PBXBuildFile; fileRef = 2897E3392004086400BEA454 /* Kekka.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2897E4B62004099000BEA454 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4B52004099000BEA454 /* Result.swift */; };
@@ -26,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284B2188217D17D6003FE8F1 /* FullyTypedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullyTypedResult.swift; sourceTree = "<group>"; };
+		284B218A217D1839003FE8F1 /* ErrorEquality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEquality.swift; sourceTree = "<group>"; };
+		284B218C217D192C003FE8F1 /* ResultTExtensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTExtensionTest.swift; sourceTree = "<group>"; };
 		2897E3362004086400BEA454 /* Kekka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kekka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2897E3392004086400BEA454 /* Kekka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kekka.h; sourceTree = "<group>"; };
 		2897E33A2004086500BEA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				2897E3462004086500BEA454 /* Info.plist */,
 				2897E4BA20040A7000BEA454 /* FutureTests.swift */,
 				2897E4BC20040BB800BEA454 /* ResultTests.swift */,
+				284B218C217D192C003FE8F1 /* ResultTExtensionTest.swift */,
 			);
 			path = KekkaTests;
 			sourceTree = "<group>";
@@ -107,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				2897E4B52004099000BEA454 /* Result.swift */,
+				284B2188217D17D6003FE8F1 /* FullyTypedResult.swift */,
+				284B218A217D1839003FE8F1 /* ErrorEquality.swift */,
 			);
 			path = "Result<T>";
 			sourceTree = "<group>";
@@ -233,6 +242,8 @@
 			files = (
 				2897E4B62004099000BEA454 /* Result.swift in Sources */,
 				2897E4B9200409E200BEA454 /* Future.swift in Sources */,
+				284B218B217D1839003FE8F1 /* ErrorEquality.swift in Sources */,
+				284B2189217D17D6003FE8F1 /* FullyTypedResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2897E4BD20040BB800BEA454 /* ResultTests.swift in Sources */,
+				284B218D217D192C003FE8F1 /* ResultTExtensionTest.swift in Sources */,
 				2897E4BB20040A7000BEA454 /* FutureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

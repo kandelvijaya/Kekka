@@ -27,26 +27,26 @@ final class ResultTTests: XCTestCase {
     func testWhenResultWithSuccessIsMapped_thenOutputIsResultWithTransformation() {
         let resultInt = Result<Int>.success(value: 12)
         let output = resultInt.map { $0 * 2 }
-        assertEqual(output, Result<Int>.success(value: 24))
+        XCTAssertEqual(output, .success(value: 24))
     }
 
     func testWhenResultWithFailureIsMapped_thenOutputIsResultWithInitialFailure() {
         let failInt = Result<Int>.failure(error: IntError.testError)
         let output = failInt.map { "\($0)" }
-        assertEqual(output, Result<String>.failure(error: IntError.testError))
+        XCTAssertEqual(output, .failure(error: IntError.testError))
     }
 
     func testWhenResultWithFailureIsMappedSuccessively_thenOutputIsResultWithFirstFailure() {
         let failInt = Result<Int>.failure(error: IntError.testError)
-        let output = failInt.map { ($0 * 2) }.map { "\(0)" }.map { $0.uppercased() }
-        assertEqual(output, Result<String>.failure(error: IntError.testError))
+        let output = failInt.map { $0 * 2 }.map { "\(0)" }.map { $0.uppercased() }
+        XCTAssertEqual(output, .failure(error: IntError.testError))
     }
 
     func testWhenIntResultWithSuccessIsMappedToDivBy2_thenItProducesDoubleWrappedResult() {
         let initialInt = Result<Int>.success(value: 12)
         let output = initialInt.map(divBy2)
         let expected = Result.success(value: Result<Int>.success(value: 6))
-        assertEqual(output, expected)
+        XCTAssertEqual(output, expected)
     }
 
     // As seen above, chaining becomes tedious if the result is double wrapped
@@ -57,36 +57,61 @@ final class ResultTTests: XCTestCase {
         let initialInt = Result<Int>.success(value: 12)
         let output = initialInt.flatMap(divBy2)
         let expected = Result<Int>.success(value: 6)
-        assertEqual(output, expected)
+        XCTAssertEqual(output, expected)
     }
 
     func testWhenIntResultWithSuccessIsFlatMappedToDivBy0ThenDivBy2_thenItProducesResultWithDivFailure() {
         let initialInt = Result<Int>.success(value: 12)
         let output = initialInt.flatMap(divBy2).flatMap(divBy0).flatMap(divBy2)
         let expected = Result<Int>.failure(error: IntError.cannotDivideByZero)
-        assertEqual(output, expected)
+        XCTAssertEqual(output, expected)
     }
 
-    private func assertEqual<T: Equatable>(_ lhs: Result<T>, _ rhs: Result<T>)  {
-        switch (lhs, rhs) {
-        case (let .success(lv), let .success(rv)):
-            XCTAssertEqual(lv, rv)
-        case (let .failure(le), let .failure(re)):
-            XCTAssertEqual(le.localizedDescription, re.localizedDescription)
-        default:
-            XCTFail("\(lhs) is not equal to \(rhs)")
-        }
+    //MARK:- Equality Tests
+
+    func test_whenResultWithSameIntsAreCompared_thenTheyAreEqual() {
+        let a = Result.success(value: 1)
+        let b = Result.success(value: 1)
+        XCTAssertEqual(a, b)
     }
 
-    private func assertEqual<T: Equatable>(_ lhs: Result<Result<T>>, _ rhs: Result<Result<T>>)  {
-        switch (lhs, rhs) {
-        case (let .success(lv), let .success(rv)):
-            assertEqual(lv, rv)
-        case (let .failure(le), let .failure(re)):
-            XCTAssertEqual(le.localizedDescription, re.localizedDescription)
-        default:
-            XCTFail("\(lhs) is not equal to \(rhs)")
-        }
+    func test_whenResultWithSameErrorsAreCompared_thenTheyAreEqual() {
+        let a = Result<Int>.failure(error: TestError.cantDivideByTwo)
+        let b = Result<Int>.failure(error: TestError.cantDivideByTwo)
+        XCTAssertEqual(a, b)
     }
+
+    func test_whenResultWithSameErrorWithAssociatedTypesAreCompared_thenTheyAreEqual() {
+        let a = Result<Int>.failure(error: TestError.unknown("some error"))
+        let b = Result<Int>.failure(error: TestError.unknown("some error"))
+        XCTAssertEqual(a, b)
+    }
+
+    func test_whenResultWithErrorsWithDifferentValueForAssocaitedTypesAreCompared_thenTheyAreNotEqual() {
+        XCTAssertNotEqual(Result<Int>.failure(error: TestError.unknown("a")),
+                          Result<Int>.failure(error: TestError.unknown("b")))
+    }
+
+    func test_whenResultWithDifferentErrorAreComapred_thenTheyAreNotEqual() {
+        XCTAssertNotEqual(Result<String>.failure(error: TestError.cantDivideByTwo),
+                          Result<String>.failure(error: TestError.cantRepresentComplexNumber))
+    }
+
+    func test_whenResultStringsWithDifferentValuesAreCompared_thenTheyAreNotEqual() {
+        XCTAssertNotEqual(Result<String>.success(value: "hello"),
+                          Result<String>.success(value: "there"))
+    }
+
+    func test_whenResultWithErrorAndValueAreCompared_thenTheyAreNotEqual() {
+        XCTAssertNotEqual(Result<String>.success(value: "a"),
+                          Result<String>.failure(error: TestError.unknown("a")))
+    }
+
+    enum TestError: Error {
+        case cantDivideByTwo
+        case cantRepresentComplexNumber
+        case unknown(String)
+    }
+
 }
 

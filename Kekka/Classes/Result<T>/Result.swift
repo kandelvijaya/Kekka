@@ -66,3 +66,81 @@ public extension Result {
 
 }
 
+public extension Result {
+
+    var value: T? {
+        if case .success(value: let value) = self {
+            return value
+        }
+        return nil
+    }
+
+    var error: Error? {
+        if case .failure(error: let error) = self {
+            return error
+        }
+        return nil
+    }
+
+}
+
+public extension Result {
+
+    var succeeded: Bool {
+        switch self {
+            case .success: return true
+            case .failure: return false
+        }
+    }
+
+    var failed: Bool {
+        switch self {
+            case .success: return false
+            case .failure: return true
+        }
+    }
+
+}
+
+public extension Result {
+
+    /// In case error has to be transformed
+    public func mapError(_ transform: (Error) -> Error) -> Result<T> {
+        switch self {
+        case let .success(v):
+            return .success(value: v)
+        case let .failure(e):
+            return .failure(error: transform(e))
+        }
+    }
+
+}
+
+/**
+ Extending Error type for easy creation of KResult<T> failed case.
+ */
+public extension Error {
+
+    public func result<T>() -> Result<T> {
+        return Result<T>.failure(error: self)
+    }
+
+}
+
+// MARK:- Equality on Result type
+
+extension Result: Equatable where T: Equatable {
+
+    public static func == (lhs: Result<T>, rhs: Result<T>) -> Bool {
+        switch (lhs, rhs) {
+        case let (.success(value: v1), .success(value: v2)):
+            return v1 == v2
+        case let (.failure(error: e1), .failure(error: e2)):
+            return areEqual(e1, e2)
+        default:
+            return false
+        }
+    }
+
+}
+
