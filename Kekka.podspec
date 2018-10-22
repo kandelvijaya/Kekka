@@ -4,8 +4,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "Kekka"
-  s.version      = "0.6.0"
-  s.summary      = "Kekka (結果) means Result. This small frmework is inspired from Haskell's monadic types."
+  s.version      = "0.7.1"
+  s.summary      = "Kekka (結果) means Result. This small framework is inspired from Haskell's monadic types."
 
   s.description  = <<-DESC
                    This is a small framework with fundamental types like Result and Future
