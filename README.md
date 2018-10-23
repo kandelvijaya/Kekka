@@ -1,8 +1,8 @@
 [[./icon.png]]
 
-* Kekka
-** Implemented Features
-*** Result<T>
+# Kekka
+## Implemented Features
+### Result<T>
     - Abstraction on types that can fail (Contextual types i.e Network result)
     ```swift
         enum MathError: Error {
@@ -23,7 +23,7 @@
       /// flatMap | bind [Monad]
       divide(item: 12, by: 6).flatMap { divide(item: Int($0), by: 2) }  // .success(1)
     ```
-*** Future<T>
+### Future<T>
     - Abstraction over async tasks and nested callbacks (i.e. animation,
       networking, reading file)
       ```swift
@@ -68,13 +68,11 @@
     ```
     - Result and Future can work seemlessy enabling elegant code which is both easy to reason.
       The same technique can be used for chaining animations, IO and side effect programming.
-      
-** To be implemented 
-*** IO
+
+## To be implemented 
+### IO
     - Abstraction over impure compuatation (capturing side effects)
-*** Network<T>
-    - Wrapper over IO<T> and Future<T> enabling easy networking code
-** Contribution Policy
+## Contribution Policy
    - Syntatic sugar and fancy extension without fundamental proof are not what
      this minimalistic library strives for
    - Else, feel free to create issue or pull request.
