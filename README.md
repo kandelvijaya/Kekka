@@ -3,7 +3,7 @@
 # Kekka
 ## Implemented Features
 ### Result<T>
-    - Abstraction on types that can fail (Contextual types i.e Network result)
+- Abstraction on types that can fail (Contextual types i.e Network result)
     ```swift
         enum MathError: Error {
         case cannotDivideByZero
@@ -14,7 +14,7 @@
           return .success(value: Double(item / by))
       }
     ```
-    - provides `map` and `flatMap` (i.e. `bind`)
+- provides `map` and `flatMap` (i.e. `bind`)
     ```swift
       /// map [Functor]
       divide(item: 12, by: 0).map { $0 * 2 }  // still .failure(.cannotDivideByZero)
@@ -24,8 +24,9 @@
       divide(item: 12, by: 6).flatMap { divide(item: Int($0), by: 2) }  // .success(1)
     ```
 ### Future<T>
-    - Abstraction over async tasks and nested callbacks (i.e. animation,
+- Abstraction over async tasks and nested callbacks (i.e. animation,
       networking, reading file)
+
       ```swift
       final class Network {
 
@@ -52,7 +53,7 @@
 
       }
       ```
-    - provides `map`(i.e. `then`)  and `flatMap` (i.e `bind`)
+- provides `map`(i.e. `then`)  and `flatMap` (i.e `bind`)
     ```swift
     /// This allows one to reason code in linear way without the threading involved. 
     let url = URL(string: "https://www.kandelvijaya.com")!
@@ -66,12 +67,12 @@
                             .map { transformToModel($0) }  // produces Future<Result<XViewModel>>
                             .execute()
     ```
-    - Result and Future can work seemlessy enabling elegant code which is both easy to reason.
+- Result and Future can work seemlessy enabling elegant code which is both easy to reason.
       The same technique can be used for chaining animations, IO and side effect programming.
 
 ## To be implemented 
 ### IO
-    - Abstraction over impure compuatation (capturing side effects)
+- Abstraction over impure compuatation (capturing side effects)
 ## Contribution Policy
    - Syntatic sugar and fancy extension without fundamental proof are not what
      this minimalistic library strives for
