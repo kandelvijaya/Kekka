@@ -27,7 +27,7 @@
 - Abstraction over async tasks and nested callbacks (i.e. animation,
       networking, reading file)
 
-      ```swift
+    ```swift
       final class Network {
 
           public enum NetworkError: Error {
@@ -52,8 +52,9 @@
           }
 
       }
-      ```
+    ```
 - provides `map`(i.e. `then`)  and `flatMap` (i.e `bind`)
+  
     ```swift
     /// This allows one to reason code in linear way without the threading involved. 
     let url = URL(string: "https://www.kandelvijaya.com")!
