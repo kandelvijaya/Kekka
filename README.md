@@ -1,4 +1,4 @@
-[[./icon.png]]
+<img src="./icon.png">
 
 # Kekka
 ## Implemented Features
