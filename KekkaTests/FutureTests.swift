@@ -13,8 +13,8 @@ final class FutureTTests: XCTestCase {
 
     // Future is a Experssion. You have to evaluate with `execute()` to make it work.
     func testWhenFutureIsCreatedWithEventualValue_thenTheChainedThenBlockIsNotExecutedIfExecuteIsNotInvoked() {
-        let FutureMeTrue = Future(true)
-        FutureMeTrue.then { status -> Void in
+        let futureMeTrue = Future(true)
+        futureMeTrue.then { status -> Void in
             XCTFail("""
                     All Futures are curried expression. They don't execute unless `execute()` is called on them.
                     This test is supposed assert when `execute()` is not called then this block is not executed.
@@ -22,8 +22,8 @@ final class FutureTTests: XCTestCase {
         }
     }
     func testWhenFutureIsCreatedWithEventualValue_thenTheChainedBindBlockIsNotExecutedIfExecuteIsNotInvoked() {
-        let FutureMeTrue = Future(true)
-        _ = FutureMeTrue.bind { status -> Future<Bool> in
+        let futureMeTrue = Future(true)
+        _ = futureMeTrue.bind { status -> Future<Bool> in
             XCTFail("""
                     All Futures are curried expression. They don't execute unless `execute()` is called on them.
                     This test is supposed assert when `execute()` is not called then this block is not executed.
@@ -33,11 +33,11 @@ final class FutureTTests: XCTestCase {
     }
 
     func testWhenFutureWithBlockIsCreated_thenTheChainedMethodIsNotCalledWithoutExplicitExecuteInvocation() {
-        let FutureMeTrueBlock = Future<Bool>{ aCompletion in
+        let futureMeTrueBlock = Future<Bool>{ aCompletion in
             aCompletion?(true)
         }
 
-        FutureMeTrueBlock.then { Bool -> Void in
+        futureMeTrueBlock.then { Bool -> Void in
             XCTFail("""
                     All Futures are curried expression. They don't execute unless `execute()` is called on them.
                     This test is supposed assert when `execute()` is not called then this block is not executed.
@@ -46,11 +46,11 @@ final class FutureTTests: XCTestCase {
     }
 
     func testWhenFutureWithBlockIsCreated_thenTheChainedMethodViaBindIsNotCalledWithoutExplicitExecuteInvocation() {
-        let FutureMeTrueBlock = Future<Bool>{ aCompletion in
+        let futureMeTrueBlock = Future<Bool>{ aCompletion in
             aCompletion?(true)
         }
 
-        _ = FutureMeTrueBlock.bind { Bool -> Future<Bool> in
+        _ = futureMeTrueBlock.bind { Bool -> Future<Bool> in
             XCTFail("""
                     All Futures are curried expression. They don't execute unless `execute()` is called on them.
                     This test is supposed assert when `execute()` is not called then this block is not executed.
@@ -61,10 +61,10 @@ final class FutureTTests: XCTestCase {
 
     func testWhenEventulValuedFutureExists_thenTheyCanBeCopiedSafely() {
         let chocolateLeftAfterMatteoAte2: (Int) -> Int = { $0 - 2 }
-        let FutureMe4Chocolates = Future(4).then(chocolateLeftAfterMatteoAte2)
-        let toExecuteFuture = FutureMe4Chocolates
+        let futureMe4Chocolates = Future(4).then(chocolateLeftAfterMatteoAte2)
+        let toExecuteFuture = futureMe4Chocolates
 
-        FutureMe4Chocolates.then { x -> Void in
+        futureMe4Chocolates.then { x -> Void in
             XCTFail("This shouldn't be executed. This is not related to whoever copied this one.")
         }
 
@@ -77,28 +77,28 @@ final class FutureTTests: XCTestCase {
 
     // Creation, Execution of Future
     func testWhenFutureIsCreatedFromEventualValue_thenFutureIsCreated() {
-        let Future12 = Future(12)
-        Future12.then { x -> Void in
+        let future12 = Future(12)
+        future12.then { x -> Void in
             XCTAssertEqual(x, 12)
             }.execute()
     }
 
     func testWhenFutureIsCreatedFromEventualValue_thenItCanBeChainedWithOtherFunctionThatTakesTheValueTypeViaThen() {
-        let Future12 = Future(12)
+        let future12 = Future(12)
         let multiplyBy12: (Int) -> Int = { $0 * 12 }
         let divideBy12 : (Int) -> Int = { $0 / 12 }
-        Future12.then(multiplyBy12).then(divideBy12).then { result -> Void in
+        future12.then(multiplyBy12).then(divideBy12).then { result -> Void in
             XCTAssertEqual(12, result)
             }.execute()
     }
 
     // Binding Futures
     func testWhenEventualFutureIsBindedWithOtherFuture_thenEvaluationExecutesBothFuturesInCreationOrder() {
-        let Future12 = Future(12)
+        let future12 = Future(12)
         let giveMeMultiply12Future: (Int) -> Future<Int> = { Future($0 * 12) }
         let divideBy12Future: (Int) -> Future<Int> = { Future($0 / 12) }
 
-        let expression = Future12.bind(giveMeMultiply12Future).bind(divideBy12Future)
+        let expression = future12.bind(giveMeMultiply12Future).bind(divideBy12Future)
         expression.then { result -> Void in
             XCTAssertEqual(result, 12)
             }.execute()
