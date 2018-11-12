@@ -17,6 +17,7 @@
 		2897E4B9200409E200BEA454 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4B8200409E200BEA454 /* Future.swift */; };
 		2897E4BB20040A7000BEA454 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4BA20040A7000BEA454 /* FutureTests.swift */; };
 		2897E4BD20040BB800BEA454 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E4BC20040BB800BEA454 /* ResultTests.swift */; };
+		28F89EA0219A355D00518347 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F89E9F219A355D00518347 /* Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		2897E4B8200409E200BEA454 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		2897E4BA20040A7000BEA454 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		2897E4BC20040BB800BEA454 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		28F89E9F219A355D00518347 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				2897E4B7200409D400BEA454 /* Future<T> */,
 				2897E4B42004098000BEA454 /* Result<T> */,
+				28F89E9F219A355D00518347 /* Operators.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2897E4B62004099000BEA454 /* Result.swift in Sources */,
+				28F89EA0219A355D00518347 /* Operators.swift in Sources */,
 				2897E4B9200409E200BEA454 /* Future.swift in Sources */,
 				284B218B217D1839003FE8F1 /* ErrorEquality.swift in Sources */,
 				284B2189217D17D6003FE8F1 /* FullyTypedResult.swift in Sources */,
