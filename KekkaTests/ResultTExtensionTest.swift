@@ -18,19 +18,19 @@ final class ResultTExtensionTests: XCTestCase {
     //MARK:- value? error? extraction
 
     func test_whenResultHasValue_thenItCanBeExtracted() {
-        XCTAssertEqual(Result<Int>.success(value: 12).value, .some(12))
+        XCTAssertEqual(Result<Int>.success(12).value, .some(12))
     }
 
     func test_whenResultHasValue_thenErrorCannotBeExtracted() {
-        XCTAssertNil(Result<Int>.success(value: 12).error)
+        XCTAssertNil(Result<Int>.success(12).error)
     }
 
     func test_whenResultHasError_thenValueCannotBeExtracted() {
-        XCTAssertNil(Result<Int>.failure(error: TError.someError).value)
+        XCTAssertNil(Result<Int>.failure(TError.someError).value)
     }
 
     func test_whenResultHasError_thenValueCanBeExtracted() {
-        let extractedError = Result<Int>.failure(error: TError.someError).error
+        let extractedError = Result<Int>.failure(TError.someError).error
         let eventualType = extractedError as? TError
         XCTAssertEqual(eventualType, TError.someError)
     }
@@ -38,19 +38,19 @@ final class ResultTExtensionTests: XCTestCase {
     // MARK:- succeeded / failed extraction
 
     func test_whenResultHasValue_thenItSucceeded() {
-        XCTAssertTrue(Result<Int>.success(value: 12).succeeded)
+        XCTAssertTrue(Result<Int>.success(12).succeeded)
     }
 
     func test_whenResultHasValue_thenItIsNotFailed() {
-        XCTAssertFalse(Result<Int>.success(value: 12).failed)
+        XCTAssertFalse(Result<Int>.success(12).failed)
     }
 
     func test_whenResultHasError_thenItIsFailed() {
-        XCTAssertTrue(Result<Int>.failure(error: TError.someError).failed)
+        XCTAssertTrue(Result<Int>.failure(TError.someError).failed)
     }
 
     func test_whenResultHasError_thenItIsNotSucceeded() {
-        XCTAssertFalse(Result<Int>.failure(error: TError.someError).succeeded)
+        XCTAssertFalse(Result<Int>.failure(TError.someError).succeeded)
     }
 
     // MARK:- Creation of result from Error types
@@ -67,7 +67,7 @@ final class ResultTExtensionTests: XCTestCase {
             case other(from: String)
         }
 
-        let mappedError = Result<Int>.failure(error: TError.someError).mapError { SomeOtherError.other(from: String(describing: $0)) }
+        let mappedError = Result<Int>.failure(TError.someError).mapError { SomeOtherError.other(from: String(describing: $0)) }
 
         let gotError = mappedError.error as? SomeOtherError
         let expectedError = SomeOtherError.other(from: String(describing: TError.someError))
@@ -81,7 +81,7 @@ final class ResultTExtensionTests: XCTestCase {
             case other(from: String)
         }
 
-        let mappedError = Result<Int>.success(value: 12).mapError {
+        let mappedError = Result<Int>.success(12).mapError {
             SomeOtherError.other(from: String(describing: $0))
         }
 

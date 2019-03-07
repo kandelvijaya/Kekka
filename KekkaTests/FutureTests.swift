@@ -132,11 +132,11 @@ final class Network {
             let session = URLSession(configuration: .default)
             let dataTask = session.dataTask(with: url) { (data, response, error) in
                 if let d = data, error == nil {
-                    aCompletion?(.success(value: d))
+                    aCompletion?(.success(d))
                 } else if let e = error {
-                    aCompletion?(.failure(error: e))
+                    aCompletion?(.failure(e))
                 } else {
-                    aCompletion?(.failure(error: NetworkError.unknown))
+                    aCompletion?(.failure(NetworkError.unknown))
                 }
             }
             dataTask.resume()

@@ -18,25 +18,25 @@ final class FullyTypedResultTests: XCTestCase {
     }
 
     func test_fullyTypedResultCanEmitResultType() {
-        let res = ResultTyped<Int, SomeError>.success(value: 12)
+        let res = ResultTyped<Int, SomeError>.success(12)
         XCTAssertEqual(res.untyped.value, 12)
     }
 
     func test_fullyTypedResultWithErrorCanEmitResultType() {
-        let res = ResultTyped<Int, SomeError>.failure(error: SomeError.divideByZero)
+        let res = ResultTyped<Int, SomeError>.failure(SomeError.divideByZero)
         let error = res.untyped.error as? SomeError
         XCTAssertNotNil(error)
         XCTAssertTrue(error!.isEqual(to: SomeError.divideByZero))
     }
 
     func test_fullyTypedResultCanBeCompared() {
-        XCTAssertEqual(ResultTyped<Int, SomeError>.success(value: 12), .success(value: 12))
-        XCTAssertNotEqual(ResultTyped<Int, SomeError>.success(value: 12), .success(value: 13))
+        XCTAssertEqual(ResultTyped<Int, SomeError>.success(12), .success(12))
+        XCTAssertNotEqual(ResultTyped<Int, SomeError>.success(12), .success(13))
 
-        XCTAssertEqual(ResultTyped<Int, SomeError>.failure(error: SomeError.divideByZero), .failure(error: SomeError.divideByZero))
-        XCTAssertNotEqual(ResultTyped<Int, SomeError>.failure(error: SomeError.divideByZero), .failure(error: SomeError.other))
+        XCTAssertEqual(ResultTyped<Int, SomeError>.failure(SomeError.divideByZero), .failure(SomeError.divideByZero))
+        XCTAssertNotEqual(ResultTyped<Int, SomeError>.failure(SomeError.divideByZero), .failure(SomeError.other))
 
-        XCTAssertNotEqual(ResultTyped<Int, SomeError>.success(value: 12), .failure(error: SomeError.other))
+        XCTAssertNotEqual(ResultTyped<Int, SomeError>.success(12), .failure(SomeError.other))
     }
 
 }
